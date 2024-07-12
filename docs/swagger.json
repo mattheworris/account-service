@@ -284,7 +284,16 @@
     "contact": {}
   },
   "tags": [],
-  "servers": [],
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local"
+    },
+    {
+      "url": "http://localhost:3013",
+      "description": "Local (SAT Bare Metal)"
+    }
+  ],
   "components": {
     "securitySchemes": {
       "bearer": {

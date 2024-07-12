@@ -8,6 +8,8 @@ export const generateSwaggerDoc = async (app: INestApplication) => {
     .setTitle('Account Service')
     .setDescription('Account Service API')
     .setVersion('1.0')
+    .addServer('http://localhost:3000', 'Local')
+    .addServer('http://localhost:3013', 'Local (SAT Bare Metal)')
     .addBearerAuth({
       type: 'http',
       description: 'Enter JWT token',
@@ -26,7 +28,7 @@ export const initSwagger = async (app: INestApplication, apiPath: string) => {
 
   // write swagger.json to disk
   fs.writeFileSync(
-    './swagger.json',
+    './docs/swagger.json',
     JSON.stringify(document, (_, v) => v, 2),
   );
   SwaggerModule.setup(apiPath, app, document);

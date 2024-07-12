@@ -4,6 +4,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ConfigService } from '#lib/config/config.service';
 import { initSwagger } from '#lib/config/swagger_config';
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { ApiModule } from './api.module';
 
 const logger = new Logger('main');
@@ -24,6 +25,12 @@ async function bootstrap() {
   const app = await NestFactory.create(ApiModule, {
     logger: process.env.DEBUG ? ['error', 'warn', 'log', 'verbose', 'debug'] : ['error', 'warn', 'log'],
   });
+  const corsOptions: CorsOptions = {
+    origin: 'https://mattheworris.github.io',
+    optionsSuccessStatus: 200,
+  };
+
+  app.enableCors(corsOptions);
   logger.debug('DEBUG log is enabled');
   logger.verbose('VERBOSE log is enabled');
 

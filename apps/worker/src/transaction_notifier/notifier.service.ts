@@ -33,7 +33,7 @@ export class TxnNotifierService
     }
     this.schedulerRegistry.addInterval(
       this.intervalName,
-      setInterval(() => this.scan(), BlockchainConstants.SECONDS_PER_BLOCK * MILLISECONDS_PER_SECOND),
+      setInterval(() => this.scan(), MILLISECONDS_PER_SECOND),
     );
   }
 
